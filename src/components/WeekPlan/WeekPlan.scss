@@ -1,0 +1,17 @@
+.WeekPlan-Wrapper {
+  width: 100%;
+}
+
+.schedule {
+  width: 1400px;
+  display: grid;
+  margin: 0 auto;
+  column-gap: 5px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.column {
+  border: 2px solid #D3D3D3;
+  height: calc(100vh - 250px);
+  overflow-y: hidden;
+}
