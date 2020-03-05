@@ -4,8 +4,7 @@ export default class WeekPlan extends Component {
   constructor() {
     super();
     this.state = {
-      device: "desktop",
-      showErrorModal: false
+
     };
   }
 
