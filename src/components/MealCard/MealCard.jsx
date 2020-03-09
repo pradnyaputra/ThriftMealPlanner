@@ -1,5 +1,10 @@
 import React from "react";
 import { Card } from "antd";
+import {
+  ExpandAltOutlined,
+  PlusOutlined,
+  StarOutlined
+} from "@ant-design/icons";
 import "./MealCard.scss";
 
 const { Meta } = Card;
@@ -15,6 +20,14 @@ export default function MealCard(props) {
           className="meal-image"
         />
       }
+      actions={[
+        <StarOutlined
+          key="star"
+          onClick={() => props.addRemoveFav(props.recipe)}
+        />,
+        <PlusOutlined key="plus" />,
+        <ExpandAltOutlined key="expand" />
+      ]}
     >
       <Meta
         title={props.recipe.title}
