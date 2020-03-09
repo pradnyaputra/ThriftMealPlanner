@@ -1,15 +1,20 @@
 import React, { Component } from "react";
 // import MealCard from "../MealCard/MealCard";
-import { Card } from "antd";
+import { Card, Popover } from "antd";
 import { PlusCircleOutlined } from "@ant-design/icons";
 import "./WeekPlan.scss";
 export default class WeekPlan extends Component {
   constructor() {
     super();
     this.state = {
-      show: false
+      visible: false,
+			temp: []
     };
   }
+	
+	  handleVisibleChange = visible => {
+    this.setState({ visible });
+  };
 
   render() {
     return (
@@ -18,17 +23,26 @@ export default class WeekPlan extends Component {
           <div className="column">
             Sunday
             <div>
-              {this.state.show &&
-                this.props.user_favourites.map(recipe => (
+              {this.state.temp.map(recipe => (
                   <Card key={recipe.id} style={{ marginBottom: "10px" }}>
                     <p>{recipe.title}</p>
                   </Card>
                 ))}
             </div>
+						      <Popover
+										placement="right"
+        					content={this.props.user_favourites.map(recipe => (
+                    <p key={recipe.id} onClick={() => this.setState({temp: [recipe], visible: false})} style={{ cursor: "pointer"}}>{recipe.title}</p>
+                		))}
+        title="Choose a meal to add"
+        visible={this.state.visible}
+        onVisibleChange={this.handleVisibleChange}
+      >
             <PlusCircleOutlined
               key="plus"
-              onClick={() => this.setState({ show: true })}
+              onClick={() => this.setState({ visible: true })}
             />
+						</Popover>
           </div>
           <div className="column">
             Monday

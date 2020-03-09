@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Tabs } from "antd";
+import { getIngredients } from "../../actions/apiQuery"
 import Recipes from "../Recipes/Recipes";
 import WeekPlan from "../WeekPlan/WeekPlan";
 import GroceryList from "../GroceryList/GroceryList";
@@ -24,22 +25,33 @@ export default class Content extends Component {
         saturday: []
       },
       user_favourites: [],
-      user_preferences: []
+      user_preferences: [],
+			ingredients: []
     };
   }
 
   addRemoveFav = recipe => {
     let favourites = this.state.user_favourites;
+		let ind = this.state.ingredients;
 
     if (favourites.includes(recipe)) {
       this.setState({
         user_favourites: favourites.filter(r => r !== recipe)
       });
+			
     } else {
       favourites.push(recipe);
       this.setState({
         user_favourites: favourites
       });
+			
+			getIngredients(recipe.id).then(res => {
+				console.log(res.data)
+				ind.concat(res.data.extendedIngredients);
+				this.setState({
+					ingredients: res.data.extendedIngredients
+				}, () => this.state.ingredients)
+			})
     }
   };
 
@@ -62,6 +74,7 @@ export default class Content extends Component {
           </TabPane>
           <TabPane tab="GROCERY LIST" key="3">
             <GroceryList
+							ingredients={this.state.ingredients}
               user_weekplan={this.state.user_weekplan}
               user_favourites={this.state.user_favourites}
             />
