@@ -11,19 +11,6 @@ export default class Preferences extends Component {
     }
   }
 
-  dietUpdate = e => {
-    this.setState({
-      user_diet: e.target.value
-    });
-  };
-
-  foodPrefUpdate = checkedValues => {
-    console.log('checkbox checked', checkedValues.value);
-    this.setState({
-      user_food_restrictions: checkedValues,
-    });
-  };
-
   render() {
     const radioStyle = {
       display: 'block',
@@ -39,7 +26,10 @@ export default class Preferences extends Component {
     return (
       <div>
         <h1>Diets</h1>
-        <Radio.Group onChange={this.dietUpdate} value={this.state.user_diet}>
+        <Radio.Group onChange={this.props.dietUpdate} value={this.props.user_diet} defaultValue={''}>
+          <Radio style={radioStyle} value={''} >
+            No Diet
+          </Radio>
           <Radio style={radioStyle} value={'Gluten Free'}>
             Gluten Free
           </Radio>
@@ -72,7 +62,7 @@ export default class Preferences extends Component {
           </Radio>
         </Radio.Group>
         <h1>Food Restrictions</h1>
-        <Checkbox.Group options={options}  onChange={this.foodPrefUpdate} />
+        <Checkbox.Group options={options}  onChange={this.props.foodPrefUpdate} />
       </div>
     )
   }

@@ -60,7 +60,7 @@ export default class WeekPlan extends Component {
             <PlusCircleOutlined key="plus" />
           </div>
           <div className="column">
-            Thursday>
+            Thursday
             <div />
             <PlusCircleOutlined key="plus" />
           </div>

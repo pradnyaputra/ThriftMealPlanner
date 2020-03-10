@@ -25,8 +25,9 @@ export default class Content extends Component {
         saturday: []
       },
       user_favourites: [],
-      user_preferences: [],
-			ingredients: []
+      user_diet: '',
+      user_food_restrictions: [],
+      ingredients: [],
     };
   }
 
@@ -55,6 +56,21 @@ export default class Content extends Component {
     }
   };
 
+  dietUpdate = e => {
+    this.setState({
+      user_diet: e.target.value
+    });
+
+    console.log(this.state.user_diet);
+  };
+
+  foodPrefUpdate = checkedValues => {
+    console.log('checkbox checked', checkedValues.value);
+    this.setState({
+      user_food_restrictions: checkedValues,
+    });
+  };
+
   render() {
     return (
       <div className="ContentWrapper">
@@ -70,11 +86,15 @@ export default class Content extends Component {
             />
           </TabPane>
           <TabPane tab="RECIPES" key="2">
-            <Recipes addRemoveFav={this.addRemoveFav} />
+            <Recipes
+                addRemoveFav={this.addRemoveFav}
+                user_diet={this.state.user_diet}
+                user_food_restrictions={this.state.user_food_restrictions}
+            />
           </TabPane>
           <TabPane tab="GROCERY LIST" key="3">
             <GroceryList
-							ingredients={this.state.ingredients}
+                ingredients={this.state.ingredients}
               user_weekplan={this.state.user_weekplan}
               user_favourites={this.state.user_favourites}
             />
@@ -86,7 +106,8 @@ export default class Content extends Component {
             />
           </TabPane>
           <TabPane tab="PREFERENCE" key="5">
-            <Preferences user_preferences={this.state.user_preferences} />
+            <Preferences user_diet={this.state.user_diet} user_food_restrictions={this.state.user_food_restrictions}
+              dietUpdate={this.dietUpdate} foodPrefUpdate={this.foodPrefUpdate}/>
           </TabPane>
         </Tabs>
       </div>

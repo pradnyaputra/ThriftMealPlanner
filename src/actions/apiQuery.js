@@ -4,6 +4,10 @@ const searchRecipe = (text) => {
   return axios.get(`https://api.spoonacular.com/recipes/search?query=${text}&number=5&apiKey=0cbf95a570fb46dab0b6ff718035d0e1`)
 }
 
+const searchAdvanced = (text, diet) => {
+  return axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${text}&number=5&diet=${diet}&apiKey=0cbf95a570fb46dab0b6ff718035d0e1`)
+}
+
 const getIngredients = (text) => {
   return axios.get(`https://api.spoonacular.com/recipes/${text}/information?includedNutrition=false&apiKey=0cbf95a570fb46dab0b6ff718035d0e1`)
 }
@@ -13,5 +17,5 @@ const getRandomRecipes = () => {
 }
 
 export {
-  searchRecipe, getIngredients, getRandomRecipes
+  searchRecipe, searchAdvanced, getIngredients, getRandomRecipes
 }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import "./Recipes.scss";
-import { searchRecipe, getRandomRecipes } from "../../actions/apiQuery";
+import { searchRecipe, getRandomRecipes, searchAdvanced } from "../../actions/apiQuery";
 import MealCard from "../MealCard/MealCard";
 export default class Recipes extends Component {
   constructor() {
@@ -18,12 +18,20 @@ export default class Recipes extends Component {
   }
 
   search = text => {
-    searchRecipe(text).then(res => {
-      console.log(res.data.results);
-      this.setState({
-        recipes: res.data.results
+    if (this.props.user_diet === '') {
+      searchRecipe(text).then(res => {
+        console.log(res.data.results);
+        this.setState({
+          recipes: res.data.results
+        });
       });
-    });
+    } else {
+      searchAdvanced(text, this.props.user_diet).then(res => {
+        this.setState({
+          recipes: res.data.results
+        });
+      });
+    }
   };
 
   render() {
