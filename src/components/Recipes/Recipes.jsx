@@ -1,14 +1,20 @@
 import React, { Component } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import "./Recipes.scss";
-import { searchRecipe } from "../../actions/apiQuery";
+import { searchRecipe, getRandomRecipes } from "../../actions/apiQuery";
 import MealCard from "../MealCard/MealCard";
 export default class Recipes extends Component {
   constructor() {
     super();
     this.state = {
-      recipes: []
+      recipes: [],
     };
+    getRandomRecipes().then(res => {
+      console.log(res.data.recipes);
+      this.setState({
+        recipes: res.data.recipes
+      });
+    });
   }
 
   search = text => {
@@ -19,8 +25,10 @@ export default class Recipes extends Component {
       });
     });
   };
+
   render() {
     const { recipes } = this.state;
+    // console.log(getRandomRecipes().data.results);
     return (
       <div>
         <SearchBar search={this.search} />

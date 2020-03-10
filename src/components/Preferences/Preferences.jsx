@@ -18,7 +18,7 @@ export default class Preferences extends Component {
   };
 
   foodPrefUpdate = checkedValues => {
-    console.log('checkbox checked', checkedValues);
+    console.log('checkbox checked', checkedValues.value);
     this.setState({
       user_food_restrictions: checkedValues,
     });
