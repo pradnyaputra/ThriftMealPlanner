@@ -1,31 +1,78 @@
 import React, { Component } from 'react'
-import { Checkbox } from 'antd'
+import { Checkbox, Radio, Input } from 'antd'
 import './Preferences.scss'
 export default class Preferences extends Component {
 
+  constructor() {
+    super();
+    this.state = {
+      user_diet: '',
+      user_food_restrictions: [],
+    }
+  }
+
+  dietUpdate = e => {
+    this.setState({
+      user_diet: e.target.value
+    });
+  };
+
+  foodPrefUpdate = checkedValues => {
+    console.log('checkbox checked', checkedValues);
+    this.setState({
+      user_food_restrictions: checkedValues,
+    });
+  };
+
   render() {
-		    const radioStyle = {
+    const radioStyle = {
       display: 'block',
       height: '30px',
       lineHeight: '30px',
     };
+
+    const options = [
+      { label: 'Apples', value: 'Apples' },
+      { label: 'Peanuts', value: 'Peanuts' },
+    ];
+
     return (
       <div>
-        <Checkbox>
-          vegetarian
-        </Checkbox>
-				        <Checkbox>
-          vegan
-        </Checkbox>
-   
-				        <Checkbox>
-          halal
-        </Checkbox>
-   
-				        <Checkbox>
-          pescatarian
-        </Checkbox>
-   
+        <h1>Diets</h1>
+        <Radio.Group onChange={this.dietUpdate} value={this.state.user_diet}>
+          <Radio style={radioStyle} value={'Gluten Free'}>
+            Gluten Free
+          </Radio>
+          <Radio style={radioStyle} value={'Ketogenic'}>
+            Ketogenic
+          </Radio>
+          <Radio style={radioStyle} value={'Vegetarian'}>
+            Vegetarian
+          </Radio>
+          <Radio style={radioStyle} value={'Lacto-Vegetarian'}>
+            Lacto-Vegetarian
+          </Radio>
+          <Radio style={radioStyle} value={'Ovo-Vegetarian'}>
+            Ovo-Vegetarian
+          </Radio>
+          <Radio style={radioStyle} value={'Vegan'}>
+            Vegan
+          </Radio>
+          <Radio style={radioStyle} value={'Pescetarian'}>
+            Pescetarian
+          </Radio>
+          <Radio style={radioStyle} value={'Paleo'}>
+            Paleo
+          </Radio>
+          <Radio style={radioStyle} value={'Primal'}>
+            Primal
+          </Radio>
+          <Radio style={radioStyle} value={'Whole30'}>
+            Whole30
+          </Radio>
+        </Radio.Group>
+        <h1>Food Restrictions</h1>
+        <Checkbox.Group options={options}  onChange={this.foodPrefUpdate} />
       </div>
     )
   }
