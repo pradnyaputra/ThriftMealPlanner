@@ -33,7 +33,7 @@ export default class Content extends Component {
 
   addRemoveFav = recipe => {
     let favourites = this.state.user_favourites;
-		let ind = this.state.ingredients;
+    let ind = this.state.ingredients;
 
     if (favourites.includes(recipe)) {
       this.setState({

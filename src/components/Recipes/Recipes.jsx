@@ -41,7 +41,8 @@ export default class Recipes extends Component {
       <div>
         <SearchBar search={this.search} />
         <div className="recipes">
-          {recipes.map(recipe => (
+          {
+            recipes.map(recipe => (
             <MealCard
               recipe={recipe}
               key={recipe.id}
