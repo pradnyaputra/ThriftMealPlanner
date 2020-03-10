@@ -27,8 +27,12 @@ export default class WeekPlan extends Component {
 	
     handleVisibleChange = visible => {
     this.setState({ visible });
+	
   };
-
+	handleVisibleChange2 = visible2 => {
+    this.setState({ visible2 });
+	};
+	
   render() {
     return (
       <div className="WeekPlan-Wrapper">
@@ -105,6 +109,7 @@ export default class WeekPlan extends Component {
               />
             </Popover>
           </div>
+		  
           <div className="column">
             Tuesday
             <div />
@@ -142,26 +147,31 @@ export default class WeekPlan extends Component {
               />
             </Popover>
           </div>
+		  
           <div className="column">
             Wednesday
             <div />
             <PlusCircleOutlined key="plus" />
           </div>
+		  
           <div className="column">
             Thursday
             <div />
             <PlusCircleOutlined key="plus" />
           </div>
+		  
           <div className="column">
             Friday
             <div />
             <PlusCircleOutlined key="plus" />
           </div>
+		  
           <div className="column">
             Saturday
             <div />
             <PlusCircleOutlined key="plus" />
           </div>
+		  
         </div>
       </div>
     );
