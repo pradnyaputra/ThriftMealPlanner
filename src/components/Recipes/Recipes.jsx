@@ -36,6 +36,7 @@ export default class Recipes extends Component {
 
   render() {
     const { recipes } = this.state;
+    console.log("I rendered");
     // console.log(getRandomRecipes().data.results);
     return (
       <div>

@@ -1,0 +1,16 @@
+.GroceryList {
+  width: 100%;
+  margin: auto;
+}
+
+table {
+  margin: auto;
+}
+
+th, td {
+  padding: 10px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}

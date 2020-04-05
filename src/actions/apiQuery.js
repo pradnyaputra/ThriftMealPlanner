@@ -1,11 +1,12 @@
 import axios from 'axios'
 
 const searchRecipe = (text) => {
-  return axios.get(`https://api.spoonacular.com/recipes/search?query=${text}&number=5&apiKey=099a77e33b5342d5b023f56db73756f8`)
+  console.log(`https://api.spoonacular.com/recipes/search?query=${text}&number=5&addRecipeInformation=true&apiKey=099a77e33b5342d5b023f56db73756f8`);
+  return axios.get(`https://api.spoonacular.com/recipes/search?query=${text}&number=5&addRecipeInformation=true&apiKey=099a77e33b5342d5b023f56db73756f8`)
 }
 
 const searchAdvanced = (text, diet) => {
-  return axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${text}&number=5&diet=${diet}&apiKey=099a77e33b5342d5b023f56db73756f8`)
+  return axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${text}&number=5&diet=${diet}&addRecipeInformation=true&apiKey=099a77e33b5342d5b023f56db73756f8`)
 }
 
 const getIngredients = (text) => {

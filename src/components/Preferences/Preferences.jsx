@@ -19,7 +19,7 @@ export default class Preferences extends Component {
     };
 
     const options = [
-      { label: 'Apples', value: 'Apples' },
+      { label: 'Shellfish', value: 'Shellfish' },
       { label: 'Peanuts', value: 'Peanuts' },
     ];
 
