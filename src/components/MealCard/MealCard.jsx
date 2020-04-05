@@ -3,7 +3,8 @@ import {Card, Modal, Button} from "antd";
 import {
   ExpandAltOutlined,
   PlusOutlined,
-  StarOutlined
+  StarOutlined,
+  StarFilled
 } from "@ant-design/icons";
 import "./MealCard.scss";
 import MealModal from "../MealModal/MealModal";
@@ -14,6 +15,7 @@ export default class MealCard extends Component {
   state = {
     loading: false,
     visible: false,
+    favourited: false,
   };
 
   showModal = () => {
@@ -23,6 +25,8 @@ export default class MealCard extends Component {
   };
 
   handleOk = () => {
+    let current = this.state.favourited;
+    this.setState({favourited: !current});
     this.setState({visible: false});
     this.props.addRemoveFav(this.props.recipe);
   };
@@ -31,6 +35,11 @@ export default class MealCard extends Component {
     this.setState({visible: false});
   };
 
+  handleFavourited = () => {
+    let current = this.state.favourited;
+    this.setState({favourited: !current});
+    this.props.addRemoveFav(this.props.recipe);
+  };
 
   render() {
     const {visible, loading} = this.state;
@@ -45,10 +54,9 @@ export default class MealCard extends Component {
               />
             }
             actions={[
-              <StarOutlined
-                  key="star"
-                  onClick={() => this.props.addRemoveFav(this.props.recipe)}
-              />,
+              this.state.favourited
+                ? (<StarFilled key="star" onClick={this.handleFavourited}/>)
+                : (<StarOutlined key="star" onClick={this.handleFavourited}/>),
               <PlusOutlined key="plus"/>,
               <ExpandAltOutlined key="expand" onClick={() => this.showModal()}/>
             ]}
@@ -67,7 +75,9 @@ export default class MealCard extends Component {
                   Back
                 </Button>,
                 <Button key="submit" type="primary" loading={loading} onClick={this.handleOk}>
-                  Add to Favourites
+                  {this.state.favourited
+                    ? "Remove from Favourites"
+                    : "Add to Favourites"}
                 </Button>,
               ]}
           >
