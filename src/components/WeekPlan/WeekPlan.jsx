@@ -2,6 +2,7 @@ import React, {Component} from "react";
 // import MealCard from "../MealCard/MealCard";
 import {Card, Popover} from "antd";
 import {PlusCircleOutlined} from "@ant-design/icons";
+import {MinusCircleOutlined} from "@ant-design/icons";
 import "./WeekPlan.scss";
 import MealCard from "../MealCard/MealCard";
 
@@ -44,8 +45,21 @@ export default class WeekPlan extends Component {
                 {this.state.temp_sun.map(recipe => (
                     <Card key={recipe.id} style={{marginBottom: "10px"}}>
                       <p>{recipe.title}</p>
+
+					  <MinusCircleOutlined 
+                    onClick={() => {
+						let arr = this.state.temp_sun;
+						let a = arr.indexOf(recipe.title);
+                        arr.splice(a,1);
+                        this.setState({temp_sun:arr})                   
+                    }}
+					/>
                     </Card>
-                ))}
+					
+                ))
+				}
+				
+				
               </div>
               <Popover
                   placement="right"
@@ -82,6 +96,14 @@ export default class WeekPlan extends Component {
                 {this.state.temp_mon.map(recipe => (
                     <Card key={recipe.id} style={{marginBottom: "10px"}}>
                       <p>{recipe.title}</p>
+					  <MinusCircleOutlined 
+                    onClick={() => {
+						let arr = this.state.temp_mon;
+						let a = arr.indexOf(recipe.title);
+                        arr.splice(a,1);
+                        this.setState({temp_mon:arr})                   
+                    }}
+					/>
                     </Card>
                 ))}
               </div>
@@ -120,6 +142,14 @@ export default class WeekPlan extends Component {
                 {this.state.temp_tues.map(recipe => (
                     <Card key={recipe.id} style={{marginBottom: "10px"}}>
                       <p>{recipe.title}</p>
+					  <MinusCircleOutlined 
+                    onClick={() => {
+						let arr = this.state.temp_tues;
+						let a = arr.indexOf(recipe.title);
+                        arr.splice(a,1);
+                        this.setState({temp_tues:arr})                   
+                    }}
+					/>
                     </Card>
                 ))}
               </div>
@@ -158,6 +188,14 @@ export default class WeekPlan extends Component {
                 {this.state.temp_wed.map(recipe => (
                     <Card key={recipe.id} style={{marginBottom: "10px"}}>
                       <p>{recipe.title}</p>
+					  <MinusCircleOutlined 
+                    onClick={() => {
+						let arr = this.state.temp_wed;
+						let a = arr.indexOf(recipe.title);
+                        arr.splice(a,1);
+                        this.setState({temp_wed:arr})                   
+                    }}
+					/>
                     </Card>
                 ))}
               </div>
@@ -196,6 +234,14 @@ export default class WeekPlan extends Component {
                 {this.state.temp_thurs.map(recipe => (
                     <Card key={recipe.id} style={{marginBottom: "10px"}}>
                       <p>{recipe.title}</p>
+					  <MinusCircleOutlined 
+                    onClick={() => {
+						let arr = this.state.temp_thurs;
+						let a = arr.indexOf(recipe.title);
+                        arr.splice(a,1);
+                        this.setState({temp_thurs:arr})                   
+                    }}
+					/>
                     </Card>
                 ))}
               </div>
@@ -234,6 +280,14 @@ export default class WeekPlan extends Component {
                 {this.state.temp_fri.map(recipe => (
                     <Card key={recipe.id} style={{marginBottom: "10px"}}>
                       <p>{recipe.title}</p>
+					  <MinusCircleOutlined 
+                    onClick={() => {
+						let arr = this.state.temp_fri;
+						let a = arr.indexOf(recipe.title);
+                        arr.splice(a,1);
+                        this.setState({temp_fri:arr})                   
+                    }}
+					/>
                     </Card>
                 ))}
               </div>
@@ -272,6 +326,14 @@ export default class WeekPlan extends Component {
                 {this.state.temp_sat.map(recipe => (
                     <Card key={recipe.id} style={{marginBottom: "10px"}}>
                       <p>{recipe.title}</p>
+					  <MinusCircleOutlined 
+                    onClick={() => {
+						let arr = this.state.temp_sat;
+						let a = arr.indexOf(recipe.title);
+                        arr.splice(a,1);
+                        this.setState({temp_sat:arr})                   
+                    }}
+					/>
                     </Card>
                 ))}
               </div>
