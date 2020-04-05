@@ -7,7 +7,6 @@ import {
   StarFilled
 } from "@ant-design/icons";
 import "./MealCard.scss";
-import MealModal from "../MealModal/MealModal";
 
 const {Meta} = Card;
 
