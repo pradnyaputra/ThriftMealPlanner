@@ -47,6 +47,7 @@ export default class Recipes extends Component {
               recipe={recipe}
               key={recipe.id}
               addRemoveFav={this.props.addRemoveFav}
+              inFavourites={false}
             />
           ))}
         </div>

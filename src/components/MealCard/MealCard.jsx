@@ -14,7 +14,7 @@ export default class MealCard extends Component {
   state = {
     loading: false,
     visible: false,
-    favourited: false,
+    favourited: this.props.inFavourites,
   };
 
   showModal = () => {

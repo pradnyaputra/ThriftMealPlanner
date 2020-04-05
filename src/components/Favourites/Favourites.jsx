@@ -12,6 +12,7 @@ export default class Favourites extends Component {
               key={recipe.id}
               recipe={recipe}
               addRemoveFav={this.props.addRemoveFav}
+              inFavourites={true}
             />
           ))}
         </div>
