@@ -8,11 +8,14 @@ export default class Recipes extends Component {
     super();
     this.state = {
       recipes: [],
+      random: false,
     };
+
     getRandomRecipes().then(res => {
       console.log(res.data.recipes);
       this.setState({
-        recipes: res.data.recipes
+        recipes: res.data.recipes,
+        random: true
       });
     });
   }
@@ -22,20 +25,22 @@ export default class Recipes extends Component {
       searchRecipe(text).then(res => {
         console.log(res.data.results);
         this.setState({
-          recipes: res.data.results
+          recipes: res.data.results,
+          random: false
         });
       });
     } else {
       searchAdvanced(text, this.props.user_diet).then(res => {
         this.setState({
-          recipes: res.data.results
+          recipes: res.data.results,
+          random: false,
         });
       });
     }
   };
 
   render() {
-    const { recipes } = this.state;
+    const recipes  = this.state.recipes;
     console.log("I rendered");
     // console.log(getRandomRecipes().data.results);
     return (
@@ -49,6 +54,7 @@ export default class Recipes extends Component {
               key={recipe.id}
               addRemoveFav={this.props.addRemoveFav}
               inFavourites={false}
+              random={this.state.random}
             />
           ))}
         </div>

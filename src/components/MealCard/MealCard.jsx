@@ -46,11 +46,20 @@ export default class MealCard extends Component {
         <Card
             style={{width: 300}}
             cover={
-              <img
-                  alt={this.props.recipe.title}
-                  src={`https://spoonacular.com/recipeImages/${this.props.recipe.image}`}
-                  className="meal-image"
-              />
+              this.props.random ?
+                  (<img
+                      alt={this.props.recipe.title}
+                      src={`${this.props.recipe.image}`}
+                      // src={`https://spoonacular.com/recipeImages/${this.props.recipe.image}`}
+                      className="meal-image"
+                  />) :
+                  (<img
+                          alt={this.props.recipe.title}
+                          // src={`${this.props.recipe.image}`}
+                          src={`https://spoonacular.com/recipeImages/${this.props.recipe.image}`}
+                          className="meal-image"
+                      />
+                  )
             }
             actions={[
               this.state.favourited

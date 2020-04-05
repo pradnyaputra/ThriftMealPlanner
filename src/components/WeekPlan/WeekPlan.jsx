@@ -45,21 +45,16 @@ export default class WeekPlan extends Component {
                 {this.state.temp_sun.map(recipe => (
                     <Card key={recipe.id} style={{marginBottom: "10px"}}>
                       <p>{recipe.title}</p>
-
 					  <MinusCircleOutlined 
-                    onClick={() => {
-						let arr = this.state.temp_sun;
-						let a = arr.indexOf(recipe.title);
-                        arr.splice(a,1);
-                        this.setState({temp_sun:arr})                   
-                    }}
+                        onClick={() => {
+                            let arr = this.state.temp_sun;
+                            let a = arr.indexOf(recipe.title);
+                            arr.splice(a,1);
+                            this.setState({temp_sun:arr})
+                        }}
 					/>
                     </Card>
-					
-                ))
-				}
-				
-				
+                ))}
               </div>
               <Popover
                   placement="right"
