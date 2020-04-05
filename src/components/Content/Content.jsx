@@ -107,7 +107,8 @@ export default class Content extends Component {
           </TabPane>
           <TabPane tab="PREFERENCE" key="5">
             <Preferences user_diet={this.state.user_diet} user_food_restrictions={this.state.user_food_restrictions}
-              dietUpdate={this.dietUpdate} foodPrefUpdate={this.foodPrefUpdate}/>
+                         dietUpdate={this.dietUpdate} foodPrefUpdate={this.foodPrefUpdate}
+            />
           </TabPane>
         </Tabs>
       </div>
